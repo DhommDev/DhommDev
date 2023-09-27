@@ -4,14 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather</title>
+    <link rel="shortcut icon" href="./animated/weather.svg" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
+    <script src="./Documents/anime-master/lib/anime.min.js"></script>
+
 </head>
 <body>
-    <h1>Meteo</h1>
-    <div class="bulle1"></div>
-    <div class="bulle2"></div>
-    <div class="bulle3"></div>
-    <div class="bulle4"></div>
+
+
+    <div id="loader">
+        <img src="./animated/day.svg" alt="" height="200px">
+    </div>
+
+
+    <h1>Meteo <img src="./animated/weather.svg" alt=""></h1>
+    <div class="bulles">
+        <div class="bulle1"></div>
+        <div class="bulle2"></div>
+        <div class="bulle3"></div>
+        <div class="bulle4"></div>
+    </div>
+
 
 <div id="box">
     <div id="box2">
@@ -38,7 +51,7 @@
     <div class="container">
         <div class="div" id="div1"><h2>❓Le saviez vous❓ </h2><span id="saviez"></span></div>
         <div class="div" id="div2" style="display: none;"><h2>Joke🤡</h2> <span id="joke"></span></div>
-        <div class="div" id="div3" style="display: none;">eez</div>
+        <div class="div" id="div3" style="display: none;">None</div>
     </div>
     
 </div>

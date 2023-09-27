@@ -4,18 +4,27 @@ var input = document.getElementById('inpu')
 const btn = document.getElementById('btn')
 
 function meto(){
+
+  fetch('https://lesaviezvous.onrender.com/infos')
+.then(response => response.json())
+.then(data => {
+  console.log(data)
+  var infos = document.getElementById('saviez')
+  infos.textContent = `${data.infos}`
+
+})
+  
   var joke = document.getElementById('joke')
 
-
-  fetch('https://www.blagues-api.fr/api/random', {
+  fetch('https://www.blagues-api.fr/api/random?disallow=dark', {
     headers: {
-      'Authorization': "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiOTk5MjYyMDcxNDI0MjkwODY2IiwibGltaXQiOjEwMCwia2V5IjoiM1k1Z3M3Z3hHNGRNSXgzS1d5b3hNNG9rZThoMkpDNHA1RlFUbmU5ekNBUW00VnZKTXoiLCJjcmVhdGVkX2F0IjoiMjAyMy0wOS0yMVQxODowNzo0OSswMDowMCIsImlhdCI6MTY5NTMxOTY2OX0.5Tr-G0ZoRyv0dXHGZ-9kZsvS4RRSrT0plFyl_ZwX7_Q"
+      'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiOTk5MjYyMDcxNDI0MjkwODY2IiwibGltaXQiOjEwMCwia2V5IjoiM1k1Z3M3Z3hHNGRNSXgzS1d5b3hNNG9rZThoMkpDNHA1RlFUbmU5ekNBUW00VnZKTXoiLCJjcmVhdGVkX2F0IjoiMjAyMy0wOS0yMVQxODowNzo0OSswMDowMCIsImlhdCI6MTY5NTMxOTY2OX0.5Tr-G0ZoRyv0dXHGZ-9kZsvS4RRSrT0plFyl_ZwX7_Q`
     }
   })
   .then(response => response.json())
   .then(data => {
     console.log(data)
-    joke.textContent = `\n${data.joke}\nReponse : ${data.answer}`
+    joke.textContent = `${data.joke}\n${data.answer}`
   
   })
           
@@ -45,12 +54,69 @@ fetch(url)
       villee.textContent =`${data.lieu.nom}, ${data.lieu.pays}`
       temp.textContent = `${data.actuel.temp_c}°C`
       principal.textContent = `${data.meteo.principal}`
-      meteo.src = `https:${data.meteo.icone}`
       humidite.textContent = `${data.actuel.humidite}%`
       latitude.textContent = `${data.lat}`
       longitude.textContent = `${data.lon}`
       precipitation.textContent = `${data.actuel.precip_mm}mm`
       vitesse.textContent = `${data.actuel.vitesse_vent_kph}Km/H`
+	const regex = /night/;
+  const regexs = /day/
+// Testez si la chaîne a correspondance avec l'expression régulière
+if (regex.test(data.meteo.icone)) {
+switch(data.meteo.principal){
+          case "Clair":
+            meteo.src = 'animated/night.svg'
+            break
+          case "Partiellement nuageux":
+          meteo.src = 'animated/cloudly-night-2.svg'
+            break
+          case "Pluie légère":
+            meteo.src = 'animated/rainy-5.svg'
+            break;
+            case "Pluie modérée":
+              meteo.src = 'animated/rainy-1.svg'
+              break;
+              case "Couvert":
+                meteo.src = 'animated/cloudy.svg'
+                break
+
+                default:
+                  meteo.src = `https:${data.meteo.icone}`
+                  break
+    // La variable a contient la sous-chaîne "ok"
+}
+
+} else if(regexs.test(data.meteo.icone)) {
+ switch (data.meteo.principal){
+          case "Ensoleillé":
+            meteo.src = 'animated/day.svg'
+            break;
+          case "Pluie modérée":
+            meteo.src = 'animated/rainy-2.svg'
+            break;
+          case "Pluie éparse à proximité":
+            meteo.src = 'animated/rainy-1.svg'
+            break
+          case "Couvert":
+            meteo.src = 'animated/cloudy.svg'
+            break
+            case "Partiellement nuageux":
+              meteo.src = 'animated/cloudy-day-2.svg'
+              break
+            case "Clair":
+                meteo.src = 'animated/day.svg'
+                break
+
+            default:
+              meteo.src = `https:${data.meteo.icone}`
+              break
+        }
+    // La variable a ne contient pas la sous-chaîne "ok"
+} else{
+  meteo.src = `https:${data.meteo.icone}`
+}
+      
+      
       
   })
   .catch(error => {
@@ -98,4 +164,57 @@ div3.addEventListener('click', () => {
     div1.style.opacity = '1'; // Augmentez l'opacité de la première div pour la montrer progressivement
   }, 300); // Le délai de 300 millisecondes correspond à la durée de l'animation CSS
 });
+const loader = document.querySelector('#loader')
 
+window.addEventListener('load', () =>{
+
+  loader.classList.add('fondu')
+  loader.classList.add('none')
+})
+anime({
+  targets: '.bulle1',
+  left: '50%',
+  // backgroundColor: '#FFF',
+  borderRadius: ['0%', '50%'],
+  easing: 'easeInOutQuad',
+  duration: '3000'
+});
+anime({
+  targets: '.bulle2',
+  left: '30%',
+  // backgroundColor: '#FFF',
+  borderRadius: ['0%', '50%'],
+  easing: 'easeInOutQuad',
+  duration: '3000'
+});
+anime({
+  targets: '.bulle3',
+  // left: '50%',
+  // backgroundColor: '#FFF',
+  borderRadius: ['0%', '50%'],
+  easing: 'easeInOutQuad',
+  duration: '3000'
+});
+anime({
+  targets: '.bulle4',
+  left: '70%',
+  // backgroundColor: '#FFF',
+  borderRadius: ['0%', '50%'],
+  easing: 'easeInOutQuad',
+  duration: '3000'
+});
+
+
+// function randomValues() {
+//   anime({
+//     targets: '.bulles div',
+//     translateX: function() {
+//       return anime.random(0, 270);
+//     },
+//     easing: 'easeInOutQuad',
+//     duration: 750,
+//     complete: randomValues
+//   });
+// }
+
+// randomValues();

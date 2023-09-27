@@ -8,23 +8,33 @@
 
 body{
     
-    background-repeat: no-repeat;
+
     height: 100vh;
     /* From https://css.glass */
 background: linear-gradient(rgba(2, 236, 205, 0.548),rgba(7, 30, 235, 0.897));
+background-repeat: no-repeat;
+background-attachment: fixed;
 border-radius: 16px;
 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 backdrop-filter: blur(5px);
 -webkit-backdrop-filter: blur(5px);
 border: 1px solid rgba(97, 88, 255, 0.34);
 overflow: hidden;
+
 }
+
+
+
+
 #box{
+    position: relative;
 display: flex;
 justify-content: space-between;
 
 
 }
+
+
 
 
 
@@ -90,10 +100,10 @@ justify-content: space-between;
   }
   
   .div {
-    display: flex;
+    /* display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
+    text-align: center; */
     height: 93.5%;
     width: 100%;
     padding: 10px;
@@ -123,6 +133,10 @@ justify-content: space-between;
     
          /* Ajoutez cette ligne pour positionner les divs relativement */
       }
+
+      .bulle4{
+        left: 54.5%;
+      }
   }
 
   #ville{
@@ -142,9 +156,9 @@ box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 backdrop-filter: blur(5px);
 -webkit-backdrop-filter: blur(5px);
 border: 1px solid rgba(255, 91, 0, 0.34);
-display: flex;
+/* display: flex;
 align-items: center;
-justify-content: center;
+justify-content: center; */
   }
 
 #div2{
@@ -172,6 +186,7 @@ border: 1px solid rgba(216, 255, 0, 0.34);
 h1{
     text-align: center;
     font-family: font-1;
+    color: white;
 }
 
 
@@ -180,14 +195,14 @@ h1{
     position: absolute;
     height: 150px;
     width: 150px;
-    border-radius: 50%;
+    /* border-radius: 50%; */
 /* From https://css.glass */
 background: rgba(255, 0, 0, 0.36);
 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 backdrop-filter: blur(8.1px);
 -webkit-backdrop-filter: blur(8.1px);
 border: 1px solid rgba(255, 0, 0, 0.98);
-    left: 50%;
+    /* left: 50%; */
     
 }
 .bulle2{
@@ -195,14 +210,14 @@ border: 1px solid rgba(255, 0, 0, 0.98);
     position: absolute;
     height: 200px;
     width: 200px;
-    border-radius: 50%;
+    /* border-radius: 50%; */
 /* From https://css.glass */
 background: rgba(0, 255, 128, 0.36);
 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 backdrop-filter: blur(8.1px);
 -webkit-backdrop-filter: blur(8.1px);
 border: 1px solid rgba(0, 255, 128, 0.98);
-    left: 30%;
+    /* left: 30%; */
     
     top: 200px;
 }
@@ -211,7 +226,7 @@ border: 1px solid rgba(0, 255, 128, 0.98);
     position: absolute;
     height: 200px;
     width: 200px;
-    border-radius: 50%;
+    /* border-radius: 50%; */
 /* From https://css.glass */
 background: rgba(0, 0, 0, 0.36);
 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -225,14 +240,14 @@ border: 1px solid rgba(0, 0, 0, 0.98);
     position: absolute;
     height: 200px;
     width: 200px;
-    border-radius: 50%;
+    /* border-radius: 50%; */
 /* From https://css.glass */
 background: rgba(34, 0, 255, 0.36);
 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 backdrop-filter: blur(8.1px);
 -webkit-backdrop-filter: blur(8.1px);
 border: 1px solid rgba(34, 0, 255, 0.3);
-    left: 70%;
+    /* left: 70%; */
     
     top: 200px;
 }
@@ -240,3 +255,33 @@ border: 1px solid rgba(34, 0, 255, 0.3);
 span{
     text-align: center;
 }
+
+#loader{
+    display: flex;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    
+    align-items: center;
+    justify-content: center;
+    
+/* From https:/z-index: 9999999999;/css.glass */
+background: rgba(255, 255, 255, 1);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(20px);
+border: 1px solid rgba(255, 255, 255, 1);
+}
+
+.fondu{
+    
+    opacity: 0;
+    transition: opacity 1s ease-out;
+    
+    
+}
+
+/* #loader::after{
+    z-index: 0;
+} */
