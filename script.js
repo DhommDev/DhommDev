@@ -68,7 +68,7 @@ switch(data.meteo.principal){
             meteo.src = 'animated/night.svg'
             break
           case "Partiellement nuageux":
-          meteo.src = 'animated/cloudly-night-2.svg'
+          meteo.src = 'animated/cloudy-night-2.svg'
             break
           case "Pluie légère":
             meteo.src = 'animated/rainy-5.svg'
